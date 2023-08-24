@@ -4,13 +4,15 @@ import { useEffect, useState } from 'react';
 export const Content = () => {
 
     const [category, setCategory] = useState("general")
-    const [news, setNews] = useState([]);
+    const [news, setNews] = useState(null);
 
     const handleButtons = (e) => {
         const newCategory = e.target.value;
         setCategory(newCategory);
         fetchNews(newCategory)
     }
+
+    console.log(news);
 
     const fetchNews = (category) => {
 
@@ -41,9 +43,9 @@ export const Content = () => {
             </div>
 
             {
-                news.length > 0 && news.map((item) => {
+                news && news.articles.map((item) => {
                     return (
-                        <div className='container mt-5' key={item.url}>
+                        <div className='container mt-5'>
                             <div class="card mb-3">
                                 <div class="row g-0">
                                     <div class="col-md-4">
