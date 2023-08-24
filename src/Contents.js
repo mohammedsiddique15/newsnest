@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 export const Content = () => {
 
     const [category, setCategory] = useState("general")
-    const [news, setNews] = useState(null);
+    const [news, setNews] = useState([]);
 
     const handleButtons = (e) => {
         const newCategory = e.target.value;
@@ -41,9 +41,9 @@ export const Content = () => {
             </div>
 
             {
-                news && news.articles.map((item) => {
+                news.length > 0 && news.map((item) => {
                     return (
-                        <div className='container mt-5'>
+                        <div className='container mt-5' key={item.url}>
                             <div class="card mb-3">
                                 <div class="row g-0">
                                     <div class="col-md-4">
